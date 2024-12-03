@@ -29,3 +29,15 @@ def TaskRead(request, pk):
         return Response(serializer.data)
     except Exception as error:
         print(error)
+
+@api_view(["POST"])
+def TaskCreate(request):
+    try:
+        serializer = TaskSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+
+        return Response(serializer.data)
+    except Exception as error:
+        print(error)

@@ -5,5 +5,6 @@ from . import views
 
 urlpatterns = [
     path('', views.ApiOverview, name='api-overview'),
-    path('task-read/<str:pk>/', views.TaskRead, name='task-read')
+    path('task-read/<str:pk>/', views.TaskRead, name='task-read'),
+    path('task-create/', views.TaskCreate, name='task-create'),
 ]
