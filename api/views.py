@@ -41,3 +41,18 @@ def TaskCreate(request):
         return Response(serializer.data)
     except Exception as error:
         print(error)
+
+@api_view(["PUT"])
+def TaskUpdate(request, pk):
+    try:
+        task = Task.objects.all().filter(id=pk)
+
+        if task:
+            serializer = TaskSerializer(instance=task[0], data=request.data)
+
+            if serializer.is_valid():
+                serializer.save()
+            
+            return Response(serializer.data)
+    except Exception as error:
+        print(error)
