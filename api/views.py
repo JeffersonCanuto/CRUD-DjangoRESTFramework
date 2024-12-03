@@ -56,3 +56,15 @@ def TaskUpdate(request, pk):
             return Response(serializer.data)
     except Exception as error:
         print(error)
+
+
+# DELETE IS NOT WORKING. NEED TO BE FIXED IN RESPONSE... 
+@api_view(["DELETE"])
+def TaskDelete(request, pk):
+    try:
+        task = Task.objects.all().filter(id=pk)
+        task.delete()
+
+        Response("Task deleted successfully...")
+    except Exception as error:
+        print(error)
